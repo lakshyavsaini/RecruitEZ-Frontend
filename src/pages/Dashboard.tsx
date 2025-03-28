@@ -77,7 +77,7 @@ const Dashboard = () => {
         resumeLink: 'https://docs.google.com/document/d/7',
         matchScore: 44.6,
         status: 'rejected',
-        summary: 'John's experience is primarily in an unrelated field with minimal transferable skills to this position. The technical requirements alignment is too low.'
+        summary: "John's experience is primarily in an unrelated field with minimal transferable skills to this position. The technical requirements alignment is too low."
       },
     ];
     
@@ -104,9 +104,9 @@ const Dashboard = () => {
       </div>
       
       <StatsCards 
-        total={2400} 
-        accepted={1900} 
-        rejected={500} 
+        total={stats.total}
+        accepted={stats.accepted}
+        rejected={stats.rejected}
       />
       
       <CandidatesTable candidates={candidates} />
