@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import PageLayout from '@/components/layout/PageLayout';
-import AnimatedBackground from '@/components/ui/AnimatedBackground';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowLeft, Users, Calendar, MapPin, Briefcase, Clock } from 'lucide-react';
@@ -79,7 +78,7 @@ const JobDetail = () => {
     return (
       <PageLayout>
         <div className="flex items-center justify-center h-96">
-          <div className="animate-pulse text-xl text-white">Loading job details...</div>
+          <div className="animate-pulse text-xl text-gray-600">Loading job details...</div>
         </div>
       </PageLayout>
     );
@@ -89,9 +88,11 @@ const JobDetail = () => {
     return (
       <PageLayout>
         <div className="text-center py-12">
-          <h2 className="text-2xl font-semibold text-white mb-4">Job not found</h2>
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Job not found</h2>
           <Link to="/jobs">
-            <Button variant="default">Back to Job Listings</Button>
+            <Button variant="outline" className="border-gray-400 text-gray-700 hover:bg-gray-100">
+              Back to Job Listings
+            </Button>
           </Link>
         </div>
       </PageLayout>
@@ -100,108 +101,109 @@ const JobDetail = () => {
 
   return (
     <PageLayout>
-      <AnimatedBackground />
-      <div className="relative z-10">
-        <div className="mb-6">
-          <Link to="/jobs" className="inline-flex items-center text-white/90 hover:text-white mb-4">
-            <ArrowLeft size={16} className="mr-2" />
-            Back to job listings
-          </Link>
-          
-          <h1 className="text-3xl font-bold tracking-tight mb-2 text-gradient">{job.position}</h1>
-          <div className="flex items-center mb-4">
-            <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mr-2">
-              <img 
-                src="/lovable-uploads/3fd684a9-bb15-4cd2-959e-f56c66687bcc.png" 
-                alt="Google Logo" 
-                className="w-5 h-5 object-contain"
-              />
+      <div className="bg-white min-h-screen">
+        <div className="container mx-auto px-4 py-8">
+          <div className="mb-6">
+            <Link to="/jobs" className="inline-flex items-center text-gray-600 hover:text-gray-800 mb-4">
+              <ArrowLeft size={16} className="mr-2" />
+              Back to job listings
+            </Link>
+            
+            <h1 className="text-3xl font-bold tracking-tight mb-2 text-gray-800">{job.position}</h1>
+            <div className="flex items-center mb-4">
+              <div className="w-10 h-10 bg-white rounded-full border border-gray-200 flex items-center justify-center mr-2 shadow-sm">
+                <img 
+                  src="/lovable-uploads/3fd684a9-bb15-4cd2-959e-f56c66687bcc.png" 
+                  alt="Google Logo" 
+                  className="w-6 h-6 object-contain"
+                />
+              </div>
+              <span className="text-gray-600 font-medium">{job.company}</span>
             </div>
-            <span className="text-white/80">{job.company}</span>
           </div>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-          <Card className="neo-glass text-white col-span-2">
-            <CardHeader>
-              <CardTitle className="text-xl text-white">Job Description</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <p className="text-white/90">{job.description}</p>
-              
-              <div>
-                <h3 className="text-lg font-medium mb-3 text-white">Responsibilities</h3>
-                <ul className="list-disc pl-5 space-y-2 text-white/90">
-                  {job.responsibilities.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-medium mb-3 text-white">Requirements</h3>
-                <ul className="list-disc pl-5 space-y-2 text-white/90">
-                  {job.requirements.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
           
-          <div className="space-y-6">
-            <Card className="neo-glass text-white">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <Card className="col-span-2 border-[#c1b6a6] shadow-md bg-white">
               <CardHeader>
-                <CardTitle className="text-lg text-white">Job Details</CardTitle>
+                <CardTitle className="text-xl text-gray-800">Job Description</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center">
-                  <MapPin size={18} className="mr-2 text-blue-200" />
-                  <span>{job.location}</span>
+              <CardContent className="space-y-6">
+                <p className="text-gray-600">{job.description}</p>
+                
+                <div>
+                  <h3 className="text-lg font-medium mb-3 text-gray-800">Responsibilities</h3>
+                  <ul className="list-disc pl-5 space-y-2 text-gray-600">
+                    {job.responsibilities.map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </ul>
                 </div>
-                <div className="flex items-center">
-                  <Briefcase size={18} className="mr-2 text-blue-200" />
-                  <span>{job.type}</span>
-                </div>
-                <div className="flex items-center">
-                  <Clock size={18} className="mr-2 text-blue-200" />
-                  <span>{job.experience}</span>
-                </div>
-                <div className="flex items-center">
-                  <Users size={18} className="mr-2 text-blue-200" />
-                  <span>Compensation: {job.salary}</span>
-                </div>
-                <div className="flex items-center">
-                  <Calendar size={18} className="mr-2 text-blue-200" />
-                  <span>Posted: {job.postedDate}</span>
+                
+                <div>
+                  <h3 className="text-lg font-medium mb-3 text-gray-800">Requirements</h3>
+                  <ul className="list-disc pl-5 space-y-2 text-gray-600">
+                    {job.requirements.map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </ul>
                 </div>
               </CardContent>
             </Card>
             
-            <Card className="neo-glass text-white">
-              <CardHeader>
-                <CardTitle className="text-lg text-white">Application Stats</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-white/90">Total Applicants:</span>
-                  <span className="font-medium">{job.totalApplicants}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-white/90">Accepted:</span>
-                  <span className="font-medium">{job.acceptedApplicants}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-white/90">Under Review:</span>
-                  <span className="font-medium">{job.underReview}</span>
-                </div>
-              </CardContent>
-              <CardFooter>
-                <Button className="w-full bg-indigo-500 hover:bg-indigo-600">
-                  Apply Now
-                </Button>
-              </CardFooter>
-            </Card>
+            <div className="space-y-6">
+              <Card className="border-[#c1b6a6] shadow-md bg-white">
+                <CardHeader>
+                  <CardTitle className="text-lg text-gray-800">Job Details</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-center">
+                    <MapPin size={18} className="mr-2 text-gray-500" />
+                    <span className="text-gray-600">{job.location}</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Briefcase size={18} className="mr-2 text-gray-500" />
+                    <span className="text-gray-600">{job.type}</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Clock size={18} className="mr-2 text-gray-500" />
+                    <span className="text-gray-600">{job.experience}</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Users size={18} className="mr-2 text-gray-500" />
+                    <span className="text-gray-600">Compensation: {job.salary}</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Calendar size={18} className="mr-2 text-gray-500" />
+                    <span className="text-gray-600">Posted: {job.postedDate}</span>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <Card className="border-[#c1b6a6] shadow-md bg-white">
+                <CardHeader>
+                  <CardTitle className="text-lg text-gray-800">Application Stats</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Total Applicants:</span>
+                    <span className="font-medium text-gray-800">{job.totalApplicants}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Accepted:</span>
+                    <span className="font-medium text-gray-800">{job.acceptedApplicants}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Under Review:</span>
+                    <span className="font-medium text-gray-800">{job.underReview}</span>
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Button className="w-full bg-white border-2 border-gray-800 text-gray-800 hover:bg-gray-100">
+                    Apply Now
+                  </Button>
+                </CardFooter>
+              </Card>
+            </div>
           </div>
         </div>
       </div>
