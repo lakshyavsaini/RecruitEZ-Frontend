@@ -108,8 +108,8 @@ const JobForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="glass-panel p-6 space-y-6 max-w-3xl mx-auto">
-      <div className="text-2xl font-bold text-center text-recruit-primary mb-6">
+    <form onSubmit={handleSubmit} className="bg-white p-6 space-y-6 max-w-3xl mx-auto border border-[#c1b6a6]/50 rounded-lg shadow-sm">
+      <div className="text-2xl font-bold text-center text-gray-800 mb-6">
         Job Posting
       </div>
       
@@ -121,7 +121,7 @@ const JobForm = () => {
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
             placeholder="Enter company name"
-            className="bg-white/70"
+            className="border-[#c1b6a6]/50 focus:border-[#c1b6a6]"
           />
         </div>
         
@@ -132,7 +132,7 @@ const JobForm = () => {
             value={jobTitle}
             onChange={(e) => setJobTitle(e.target.value)}
             placeholder="Enter job title"
-            className="bg-white/70"
+            className="border-[#c1b6a6]/50 focus:border-[#c1b6a6]"
           />
         </div>
       </div>
@@ -144,13 +144,13 @@ const JobForm = () => {
           value={jobDescription}
           onChange={(e) => setJobDescription(e.target.value)}
           placeholder="Describe the job responsibilities, skills required..."
-          className="min-h-[150px] bg-white/70"
+          className="min-h-[150px] border-[#c1b6a6]/50 focus:border-[#c1b6a6]"
         />
       </div>
       
       <div className="space-y-4">
         <div className="flex justify-between items-center">
-          <h3 className="text-lg font-semibold">Parameters</h3>
+          <h3 className="text-lg font-semibold text-gray-800">Parameters</h3>
           <div className="text-sm text-gray-500">
             Total: {parameters.reduce((sum, p) => sum + p.weight, 0)}%
           </div>
@@ -162,7 +162,7 @@ const JobForm = () => {
               value={newParameter}
               onChange={(e) => setNewParameter(e.target.value)}
               placeholder="Enter Parameter"
-              className="bg-white/70"
+              className="border-[#c1b6a6]/50 focus:border-[#c1b6a6]"
             />
           </div>
           <div className="relative">
@@ -171,7 +171,7 @@ const JobForm = () => {
               value={newParamWeight}
               onChange={(e) => setNewParamWeight(e.target.value)}
               placeholder="Weight"
-              className="pr-8 bg-white/70"
+              className="pr-8 border-[#c1b6a6]/50 focus:border-[#c1b6a6]"
               min="1"
               max="100"
             />
@@ -181,7 +181,7 @@ const JobForm = () => {
             type="button" 
             onClick={addParameter}
             variant="outline"
-            className="glass-button"
+            className="border-2 border-gray-800 text-gray-800 bg-white hover:bg-gray-50"
           >
             <Plus size={16} className="mr-1" />
             Add
@@ -189,9 +189,9 @@ const JobForm = () => {
         </div>
         
         {parameters.length > 0 && (
-          <div className="bg-white/50 rounded-lg p-2 space-y-2 max-h-[200px] overflow-y-auto">
+          <div className="bg-gray-50 rounded-lg p-2 space-y-2 max-h-[200px] overflow-y-auto border border-[#c1b6a6]/30">
             {parameters.map((param, index) => (
-              <div key={index} className="flex items-center justify-between bg-white/80 p-2 rounded-md">
+              <div key={index} className="flex items-center justify-between bg-white p-2 rounded-md border border-[#c1b6a6]/20">
                 <span className="flex-1 truncate">{param.name}</span>
                 <span className="text-sm font-medium px-2">{param.weight}%</span>
                 <Button 
@@ -211,7 +211,7 @@ const JobForm = () => {
       
       <div className="space-y-4">
         <div className="flex justify-between items-center">
-          <h3 className="text-lg font-semibold">Rules</h3>
+          <h3 className="text-lg font-semibold text-gray-800">Rules</h3>
           <div className="text-sm text-gray-500">
             Total: {rules.reduce((sum, r) => sum + r.weight, 0)}%
           </div>
@@ -223,7 +223,7 @@ const JobForm = () => {
               value={newRule}
               onChange={(e) => setNewRule(e.target.value)}
               placeholder="Enter Rules"
-              className="bg-white/70"
+              className="border-[#c1b6a6]/50 focus:border-[#c1b6a6]"
             />
           </div>
           <div className="relative">
@@ -232,7 +232,7 @@ const JobForm = () => {
               value={newRuleWeight}
               onChange={(e) => setNewRuleWeight(e.target.value)}
               placeholder="Weight"
-              className="pr-8 bg-white/70"
+              className="pr-8 border-[#c1b6a6]/50 focus:border-[#c1b6a6]"
               min="1"
               max="100"
             />
@@ -242,7 +242,7 @@ const JobForm = () => {
             type="button" 
             onClick={addRule}
             variant="outline"
-            className="glass-button"
+            className="border-2 border-gray-800 text-gray-800 bg-white hover:bg-gray-50"
           >
             <Plus size={16} className="mr-1" />
             Add
@@ -250,9 +250,9 @@ const JobForm = () => {
         </div>
         
         {rules.length > 0 && (
-          <div className="bg-white/50 rounded-lg p-2 space-y-2 max-h-[200px] overflow-y-auto">
+          <div className="bg-gray-50 rounded-lg p-2 space-y-2 max-h-[200px] overflow-y-auto border border-[#c1b6a6]/30">
             {rules.map((rule, index) => (
-              <div key={index} className="flex items-center justify-between bg-white/80 p-2 rounded-md">
+              <div key={index} className="flex items-center justify-between bg-white p-2 rounded-md border border-[#c1b6a6]/20">
                 <span className="flex-1 truncate">{rule.description}</span>
                 <span className="text-sm font-medium px-2">{rule.weight}%</span>
                 <Button 
@@ -273,7 +273,7 @@ const JobForm = () => {
       <div className="flex justify-center pt-4">
         <Button 
           type="submit" 
-          className="w-full max-w-xs bg-recruit-accent hover:bg-recruit-accent/90 text-white"
+          className="w-full max-w-xs bg-gray-800 hover:bg-gray-700 text-white"
         >
           Submit
         </Button>

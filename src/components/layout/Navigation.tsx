@@ -18,14 +18,14 @@ const Navigation = () => {
 
   const Logo = () => (
     <Link to="/" className="flex items-center space-x-2">
-      <div className="bg-white/20 backdrop-blur-md rounded-full p-2">
+      <div className="bg-white rounded-full p-2 border border-[#c1b6a6]/30">
         <img 
           src="/lovable-uploads/3fd684a9-bb15-4cd2-959e-f56c66687bcc.png" 
-          alt="Google Logo" 
+          alt="Logo" 
           className="w-6 h-6"
         />
       </div>
-      <span className="text-lg font-bold text-white">RecruitMe</span>
+      <span className="text-lg font-bold text-gray-800">RecruitMe</span>
     </Link>
   );
 
@@ -37,8 +37,8 @@ const Navigation = () => {
           to={item.path}
           className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
             location.pathname === item.path 
-              ? 'bg-indigo-600/30 text-white' 
-              : 'text-white/80 hover:bg-white/10'
+              ? 'bg-gray-100 text-gray-800' 
+              : 'text-gray-600 hover:bg-gray-50'
           }`}
         >
           {item.name}
@@ -50,11 +50,11 @@ const Navigation = () => {
   const MobileMenu = () => (
     <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
       <SheetTrigger asChild>
-        <Button variant="ghost" size="icon" className="md:hidden text-white">
+        <Button variant="ghost" size="icon" className="md:hidden text-gray-800">
           <Menu />
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="w-[80%] sm:w-[350px] bg-[#1e1d45]/90 backdrop-blur-xl border-white/10">
+      <SheetContent side="right" className="w-[80%] sm:w-[350px] bg-white border-l border-[#c1b6a6]/50">
         <div className="flex flex-col space-y-6 py-6">
           <Logo />
           <div className="flex flex-col space-y-1">
@@ -65,8 +65,8 @@ const Navigation = () => {
                 onClick={() => setIsMenuOpen(false)}
                 className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
                   location.pathname === item.path 
-                    ? 'bg-indigo-600/30 text-white' 
-                    : 'text-white/80 hover:bg-white/10'
+                    ? 'bg-gray-100 text-gray-800' 
+                    : 'text-gray-600 hover:bg-gray-50'
                 }`}
               >
                 {item.name}
@@ -74,7 +74,7 @@ const Navigation = () => {
             ))}
           </div>
           <Link to="/post-job" onClick={() => setIsMenuOpen(false)}>
-            <Button className="w-full gap-2 bg-indigo-600 hover:bg-indigo-700 text-white">
+            <Button className="w-full gap-2 bg-gray-800 hover:bg-gray-700 text-white border border-gray-800">
               <Send size={16} />
               Post Jobs
             </Button>
@@ -85,7 +85,7 @@ const Navigation = () => {
   );
 
   return (
-    <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-[#1e1d45]/70 border-b border-white/10">
+    <header className="sticky top-0 z-40 w-full bg-white border-b border-[#c1b6a6]/30 shadow-sm">
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
         <Logo />
         
@@ -94,7 +94,7 @@ const Navigation = () => {
         <div className="flex items-center gap-4">
           {!isMobile && (
             <Link to="/post-job">
-              <Button className="gap-2 bg-indigo-600 hover:bg-indigo-700 text-white">
+              <Button className="gap-2 bg-white hover:bg-gray-50 text-gray-800 border-2 border-gray-800">
                 <Send size={16} />
                 Post Jobs
               </Button>

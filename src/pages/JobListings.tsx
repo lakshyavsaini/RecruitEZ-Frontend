@@ -4,7 +4,6 @@ import PageLayout from '@/components/layout/PageLayout';
 import JobCard, { JobCardProps } from '@/components/jobs/JobCard';
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
-import AnimatedBackground from '@/components/ui/AnimatedBackground';
 
 const JobListings = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -89,11 +88,10 @@ const JobListings = () => {
   
   return (
     <PageLayout>
-      <AnimatedBackground />
       <div className="relative z-10">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold tracking-tight mb-4 text-gradient">Job Listings</h1>
-          <p className="text-slate-100 max-w-3xl">
+          <h1 className="text-3xl font-bold tracking-tight mb-4 text-gray-800">Job Listings</h1>
+          <p className="text-gray-600 max-w-3xl">
             Browse through our available job openings. Click on a job card to view details and manage applications.
           </p>
         </div>
@@ -104,7 +102,7 @@ const JobListings = () => {
             placeholder="Search jobs by position..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 bg-white/20 focus:bg-white/30 text-white placeholder:text-gray-300 border-white/30"
+            className="pl-10 bg-white border-[#c1b6a6]/50 focus:border-[#c1b6a6] text-gray-800 placeholder:text-gray-400"
           />
         </div>
         
@@ -114,9 +112,9 @@ const JobListings = () => {
           ))}
           
           {filteredJobs.length === 0 && (
-            <div className="col-span-full text-center py-12 bg-white/10 backdrop-blur-md rounded-lg">
-              <h3 className="text-lg font-medium text-white">No jobs found</h3>
-              <p className="mt-1 text-sm text-gray-300">
+            <div className="col-span-full text-center py-12 bg-white border border-[#c1b6a6]/30 rounded-lg shadow-sm">
+              <h3 className="text-lg font-medium text-gray-800">No jobs found</h3>
+              <p className="mt-1 text-sm text-gray-600">
                 Try adjusting your search terms or check back later for new openings.
               </p>
             </div>

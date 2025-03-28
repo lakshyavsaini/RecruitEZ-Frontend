@@ -97,8 +97,8 @@ const Dashboard = () => {
   return (
     <PageLayout>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight mb-4">Candidate Dashboard</h1>
-        <p className="text-slate-600 max-w-3xl">
+        <h1 className="text-3xl font-bold tracking-tight mb-4 text-gray-800">Candidate Dashboard</h1>
+        <p className="text-gray-600 max-w-3xl">
           Review and manage candidates based on their match score with your job requirements.
         </p>
       </div>

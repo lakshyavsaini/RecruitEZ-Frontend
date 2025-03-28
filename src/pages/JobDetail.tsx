@@ -198,7 +198,7 @@ const JobDetail = () => {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button className="w-full bg-white border-2 border-gray-800 text-gray-800 hover:bg-gray-100">
+                  <Button className="w-full bg-white border-2 border-gray-800 text-gray-800 hover:bg-gray-50">
                     Apply Now
                   </Button>
                 </CardFooter>
