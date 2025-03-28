@@ -4,6 +4,7 @@ import PageLayout from '@/components/layout/PageLayout';
 import JobCard, { JobCardProps } from '@/components/jobs/JobCard';
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
+import AnimatedBackground from '@/components/ui/AnimatedBackground';
 
 const JobListings = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -22,7 +23,7 @@ const JobListings = () => {
       },
       {
         id: '2',
-        company: 'Facebook',
+        company: 'Google',
         position: 'Software Engineer',
         totalApplicants: 1700,
         acceptedApplicants: 600,
@@ -30,7 +31,7 @@ const JobListings = () => {
       },
       {
         id: '3',
-        company: 'RedCloud',
+        company: 'Google',
         position: 'Product Designer',
         totalApplicants: 1700,
         acceptedApplicants: 600,
@@ -38,7 +39,7 @@ const JobListings = () => {
       },
       {
         id: '4',
-        company: 'Apple',
+        company: 'Google',
         position: 'Product Designer',
         totalApplicants: 1700,
         acceptedApplicants: 600,
@@ -46,7 +47,7 @@ const JobListings = () => {
       },
       {
         id: '5',
-        company: 'Infosys',
+        company: 'Google',
         position: 'HR Head',
         totalApplicants: 1700,
         acceptedApplicants: 600,
@@ -54,7 +55,7 @@ const JobListings = () => {
       },
       {
         id: '6',
-        company: 'Oracle',
+        company: 'Google',
         position: 'Software Engineer',
         totalApplicants: 1700,
         acceptedApplicants: 600,
@@ -62,7 +63,7 @@ const JobListings = () => {
       },
       {
         id: '7',
-        company: 'Zoho',
+        company: 'Google',
         position: 'Java Developer',
         totalApplicants: 1700,
         acceptedApplicants: 600,
@@ -70,7 +71,7 @@ const JobListings = () => {
       },
       {
         id: '8',
-        company: 'Tesla',
+        company: 'Google',
         position: 'SDE-1',
         totalApplicants: 1700,
         acceptedApplicants: 600,
@@ -88,36 +89,39 @@ const JobListings = () => {
   
   return (
     <PageLayout>
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight mb-4">Job Listings</h1>
-        <p className="text-slate-600 max-w-3xl">
-          Browse through our available job openings. Click on a job card to view details and manage applications.
-        </p>
-      </div>
-      
-      <div className="relative mb-8 max-w-md">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
-        <Input
-          placeholder="Search jobs by company or position..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="pl-10 bg-white/70 focus:bg-white"
-        />
-      </div>
-      
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {filteredJobs.map((job) => (
-          <JobCard key={job.id} {...job} />
-        ))}
+      <AnimatedBackground />
+      <div className="relative z-10">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold tracking-tight mb-4 text-gradient">Job Listings</h1>
+          <p className="text-slate-100 max-w-3xl">
+            Browse through our available job openings. Click on a job card to view details and manage applications.
+          </p>
+        </div>
         
-        {filteredJobs.length === 0 && (
-          <div className="col-span-full text-center py-12">
-            <h3 className="text-lg font-medium text-gray-900">No jobs found</h3>
-            <p className="mt-1 text-sm text-gray-500">
-              Try adjusting your search terms or check back later for new openings.
-            </p>
-          </div>
-        )}
+        <div className="relative mb-8 max-w-md">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+          <Input
+            placeholder="Search jobs by position..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="pl-10 bg-white/20 focus:bg-white/30 text-white placeholder:text-gray-300 border-white/30"
+          />
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {filteredJobs.map((job) => (
+            <JobCard key={job.id} {...job} />
+          ))}
+          
+          {filteredJobs.length === 0 && (
+            <div className="col-span-full text-center py-12 bg-white/10 backdrop-blur-md rounded-lg">
+              <h3 className="text-lg font-medium text-white">No jobs found</h3>
+              <p className="mt-1 text-sm text-gray-300">
+                Try adjusting your search terms or check back later for new openings.
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </PageLayout>
   );

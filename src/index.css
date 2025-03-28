@@ -41,7 +41,7 @@
   }
 
   body {
-    @apply bg-gradient-to-br from-[#e6e9f0] to-[#eef1f5] text-foreground min-h-screen;
+    @apply bg-gradient-to-br from-[#1e1d45] via-[#2a2a5a] to-[#1e1d45] text-foreground min-h-screen;
   }
 }
 
@@ -76,5 +76,13 @@
   
   .animated-gradient {
     @apply bg-gradient-to-r from-[#accbee] to-[#e7f0fd] bg-[length:200%_200%] animate-gradient;
+  }
+  
+  .neo-glass {
+    @apply bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.15)];
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-200 via-indigo-200 to-purple-200 text-transparent bg-clip-text;
   }
 }
