@@ -10,7 +10,8 @@ const Index = () => {
     navigate('/jobs');
   }, [navigate]);
   
-  return null;
+  // Add a simple return statement with loading indicator
+  return <div className="p-8 text-center">Redirecting to jobs...</div>;
 };
 
 export default Index;
