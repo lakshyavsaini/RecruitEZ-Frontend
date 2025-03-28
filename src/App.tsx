@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react"; // Added import for useState
 import Index from "./pages/Index";
 import JobListings from "./pages/JobListings";
+import JobDetail from "./pages/JobDetail"; // Import the new JobDetail page
 import Dashboard from "./pages/Dashboard";
 import PostJob from "./pages/PostJob";
 import NotFound from "./pages/NotFound";
@@ -24,6 +25,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/jobs" element={<JobListings />} />
+            <Route path="/job/:id" element={<JobDetail />} /> {/* Add the job detail route */}
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/post-job" element={<PostJob />} />
             <Route path="*" element={<NotFound />} />
